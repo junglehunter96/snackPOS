@@ -1,25 +1,30 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <!--左侧导航区 -->
+    <sidebar></sidebar>
+
+    <!-- 路由区 -->
+    <div class="main">
+      <router-view></router-view>
     </div>
-    <router-view />
   </div>
 </template>
+<script>
+import Sidebar from "components/common/sidebar";
+export default {
+  components: {
+    Sidebar
+  }
+}
+</script>
 <style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
+@import '~common/stylus/index.styl';
 
-#nav
-  padding 30px
-  a
-    font-weight bold
-    color #2c3e50
-    &.router-link-exact-active
-      color #42b983
+.main {
+  float: left;
+  width: 95%;
+  background-color: #EFF2F7;
+  height: 600px;
+  overflow: auto;
+}
 </style>
