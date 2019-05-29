@@ -11,11 +11,11 @@
 
 ![](./static/快餐店pos系统demo.png)
 
-##项目预览
+## 项目预览
 
 ![](./static/pos系统演示.gif)
 
-##项目运行
+## 项目运行
 
 ```
  npm install
