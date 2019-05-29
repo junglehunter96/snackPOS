@@ -1,29 +1,25 @@
-# posdemo
+## 项目
 
-## Project setup
-```
-npm install
-```
+快餐店POS系统
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 技术选型
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Vue+Vuecli3 +  Vue-router + element-ui 构建
+- axios + mock 模拟后端数据
 
-### Run your tests
-```
-npm run test
-```
+## 项目原型设计
 
-### Lints and fixes files
+![](./static/快餐店pos系统demo.png)
+
+##项目预览
+
+![](./static/pos系统演示.gif)
+
+##项目运行
+
 ```
-npm run lint
+ npm install
+ 
+ npm run serve
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
