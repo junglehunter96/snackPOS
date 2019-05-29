@@ -2,22 +2,21 @@
   <div>
     <div class="offerfood">
       <div class="of-title">热销商品</div>
-      <ul
-        class="of-list"
-        v-for="item in ofterGoods"
-        :key="item.goodsId"
-      >
-        <li class="of-list-item">
+      <ul class="of-list">
+        <li
+          class="of-list-item"
+          v-for="item in ofterGoods"
+          :key="item.goodsId"
+          @click="addOrderList(item)"
+        >
           <span class="item-name">{{item.goodsName}} </span>
           <span class="item-price">￥{{item.price}}</span>
         </li>
       </ul>
     </div>
     <div class="offertab">
-      <el-tabs
-        type="card"
-        v-model="activeName"
-      >
+      <el-tabs v-model="activeName" 
+      type="card">
         <el-tab-pane
           label="汉堡"
           name="hanbao"
@@ -25,6 +24,7 @@
           <li
             v-for="goods in type0Goods"
             :key="goods.goodsName"
+            @click="addOrderList(goods)"
           >
             <span class="foodImg"><img
                 :src="goods.goodsImg"
@@ -41,6 +41,7 @@
           <li
             v-for="goods in type1Goods"
             :key="goods.goodsName"
+            @click="addOrderList(goods)"
           >
             <span class="foodImg"><img
                 :src="goods.goodsImg"
@@ -60,7 +61,8 @@
           >
             <span class="foodImg"><img
                 :src="goods.goodsImg"
-                width="100%" height="80%"
+                width="100%"
+                height="80%"
               ></span>
             <span class="foodName">{{goods.goodsName}}</span>
             <span class="foodPrice">￥{{goods.price}}元</span>
@@ -76,7 +78,8 @@
           >
             <span class="foodImg"><img
                 :src="goods.goodsImg"
-                width="100%" height="70%"
+                width="100%"
+                height="70%"
               ></span>
             <span class="foodName">{{goods.goodsName}}</span>
             <span class="foodPrice">￥{{goods.price}}元</span>
@@ -112,7 +115,7 @@ export default {
       })
     this.$axios.get('https://www.easy-mock.com/mock/5cd9810981f5e5576a8643ff/pos')
       .then(response => {
-        console.log(response.data);
+        
         this.typeGoodslist = response.data;
         this.type0Goods = this.typeGoodslist[0];
         this.type1Goods = this.typeGoodslist[1];
@@ -123,19 +126,18 @@ export default {
         console.log(error);
         alert('网络错误，不能访问');
       })
-
-
+  },
+  methods: {
+    addOrderList(goods) {
+      this.$emit('addGoods',goods)
+    }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.el-tabs__nav-scroll {
-  background-color #fff
-}
 .offerfood {
   height: 300px;
-
   .of-title {
     height: 20px;
     border-bottom: 1px solid #D3DCE6;
@@ -155,8 +157,11 @@ export default {
     }
   }
 }
-.offertab
-  height 300px
+
+.offertab {
+  height: 300px;
+  border 1px solid #E5E9F2
+  background-color rgb(248, 249, 251)
   & li {
     width: 23%;
     border: 1px solid #E5E9F2;
@@ -174,23 +179,23 @@ export default {
 
     .foodImg {
       width: 40%;
-      height: 85px
-      margin-top 10px
+      height: 85px;
+      margin-top: 10px;
     }
 
     .foodName {
       font-size: 15px;
       padding-left: 10px;
       color: brown;
-      margin-top: 10px
+      margin-top: 10px;
     }
 
     .foodPrice {
       font-size: 16px;
       padding-left: 10px;
       padding-top: 10px;
-      color #58B7FF;
+      color: #58B7FF;
     }
   }
-
+}
 </style>
