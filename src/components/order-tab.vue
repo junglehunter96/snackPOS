@@ -176,10 +176,12 @@ export default {
   },
   methods: {
     open () {
-      console.log("...")
-      this.$alert('支付成功!谢谢', '结账', {
+      setTimeout(() => {
+        this.$alert('支付成功!谢谢', '结账', {
           confirmButtonText: '确定'
           })
+          this.delAllData()
+      }, 2000);
     },
     delData (index) {
       if (this.tableData[index].count > 1) {
